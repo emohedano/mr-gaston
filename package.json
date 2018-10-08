@@ -1,0 +1,16 @@
+{
+  "name": "gaston",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "actions-on-google": "^2.4.1",
+    "firebase-admin": "^6.0.0",
+    "firebase-functions": "^2.0.5"
+  }
+}
