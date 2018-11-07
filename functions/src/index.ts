@@ -1,13 +1,6 @@
 import * as admin from 'firebase-admin';
 import * as functions from 'firebase-functions';
-import { dialogflow, Suggestions, SimpleResponse } from 'actions-on-google';
-
-// // Start writing Firebase Functions
-// // https://firebase.google.com/docs/functions/typescript
-//
-// export const helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
+import { dialogflow } from 'actions-on-google';
 
 // Instantiate a firestore client
 
@@ -32,10 +25,10 @@ app.intent('Default Fallback Intent', conv => {
 
 const EN_TRANSLATIONS = {
   EXPENSE_ADDED_MESSAGE: 'Expense added',
-  CATEGORY_ADDED_MESSAGE: 'Category added',
-  CREATE_CATEGORY_AND_SAVE_EXPENSE_MESSAGE: 'This category does not exist, would you like to create it',
-  EMPTY_CATEGORIES_MESSAGE: 'There are no categories yet',
-  CATEGORIES_LIST_MESSAGE: 'These categores are avaliable:'
+  CATEGORY_ADDED_MESSAGE: 'Category created',
+  CREATE_CATEGORY_AND_SAVE_EXPENSE_MESSAGE: 'The category does not exist, should I create it?',
+  EMPTY_CATEGORIES_MESSAGE: 'There are no available categories',
+  CATEGORIES_LIST_MESSAGE: 'Available categories are:'
 }
 
 const TRANSLATIONS = EN_TRANSLATIONS;
@@ -144,8 +137,7 @@ function expenseFromUseInput(expenseEntity){
   return {
     amount: expenseEntity['unit-currency']['amount'],
     currency: expenseEntity['unit-currency']['currency'],
-    category: expenseEntity['expense_category'] || OTHER_CATEGORY,
-    creationDate: new Date()
+    category: expenseEntity['expense_category'] || OTHER_CATEGORY
   }
 }
 
